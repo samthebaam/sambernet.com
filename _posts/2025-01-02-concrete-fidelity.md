@@ -28,6 +28,10 @@ The primary purpose of a speaker enclosure is to isolate the rear sound waves em
 
 ## **Choosing the Right Enclosure**
 There are three main types of speaker enclosures:
+
+
+![Speaker Types](/assets/images/speaker-types.png)
+
 1. **Sealed Enclosures**: Compact designs that isolate rear waves and use internal air pressure to enhance the sound.
 2. **Ported Enclosures**: Designs with a tuned port or tube that extends the bass frequencies by using rear-displaced air.
 3. **Open Baffle Speakers**: No enclosure at all, relying on the room itself to shape the sound.

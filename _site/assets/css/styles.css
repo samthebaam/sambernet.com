@@ -1,0 +1,285 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  color: #1d1d1f; /* Slightly lighter black for text */
+  line-height: 1.7;
+  background-color: #ffffff;
+  padding: 0 20px;
+}
+
+/* Header */
+header {
+  padding: 30px 0;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+header h1 {
+  font-size: 34px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 16px;
+  color: #6e6e73; /* Subtle gray for secondary text */
+}
+
+/* Main Content */
+main {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+main h2, main h3 {
+  color: #1d1d1f;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+main h2 {
+  font-size: 28px;
+  margin-top: 40px;
+}
+
+main h3 {
+  font-size: 24px;
+  margin-top: 35px;
+}
+
+main p {
+  font-size: 17px;
+  color: #3a3a3c;
+  margin-bottom: 25px;
+}
+
+main a {
+  color: #0071e3; /* Apple blue */
+  text-decoration: none;
+}
+
+main a:hover {
+  text-decoration: underline;
+}
+
+/* Blockquote */
+blockquote {
+  font-size: 24px;
+  font-style: italic;
+  color: #333;
+  border-left: 5px solid #0073e6;
+  padding-left: 20px;
+  margin: 40px 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Images with Captions */
+figure {
+  margin: 40px 0;
+  text-align: center;
+}
+
+figure img {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+figure img:hover {
+  transform: scale(1.02);
+  opacity: 0.9;
+}
+
+figcaption {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #6e6e73;
+}
+
+/* Hero Image */
+.hero-image {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.hero-overlay h1 {
+  font-size: 48px;
+  margin: 0;
+}
+
+/* Grid Layout for Posts */
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.post-card {
+  text-align: center;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-card img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.post-card h2 {
+  font-size: 20px;
+  margin: 15px 10px;
+  color: #1d1d1f;
+}
+
+.post-date {
+  font-size: 14px;
+  color: #6e6e73;
+  margin-bottom: 15px;
+}
+
+/* About Section */
+.about-section {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.about-section h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #1d1d1f;
+}
+
+.about-section p {
+  font-size: 17px;
+  color: #3a3a3c;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid #e5e5e5;
+  font-size: 15px;
+  color: #6e6e73;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.post-content img,
+.post-content blockquote {
+  animation: fadeIn 1s ease;
+  animation-fill-mode: both;
+}
+
+/* Syntax Highlighting */
+pre {
+  background: #f4f4f5; /* Light gray background */
+  color: #1d1d1f; /* Dark text color */
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+  overflow-x: auto; /* Horizontal scrolling for long lines */
+  font-family: "Courier New", Courier, monospace;
+  font-size: 90%;
+  line-height: 1.6;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 90%;
+  color: #d6336c; /* Slightly pink for inline code */
+  background-color: #f9f9f9;
+  padding: 2px 4px;
+  border-radius: 4px;
+  border: 1px solid #e5e5e5;
+}
+
+/* Syntax Elements */
+pre code .line-number {
+  color: #aaa;
+  font-style: italic;
+}
+
+pre code .keyword {
+  color: #d73a49; /* Red for keywords */
+  font-weight: bold;
+}
+
+pre code .string {
+  color: #6f42c1; /* Purple for strings */
+}
+
+pre code .comment {
+  color: #999; /* Gray for comments */
+  font-style: italic;
+}
+
+pre code .function {
+  color: #005cc5; /* Blue for functions */
+  font-weight: bold;
+}
+
+pre code .variable {
+  color: #e36209; /* Orange for variables */
+}
+
+pre code .number {
+  color: #0366d6; /* Blue for numbers */
+}
