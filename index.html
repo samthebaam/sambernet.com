@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sam Bernet</title>
+  <meta name="description" content="Notes on building, design, and life." />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="nav">
+      <div>
+        <div class="brand"><a href="/">Sam Bernet</a></div>
+        <div class="badge">sambernet.com</div>
+      </div>
+      <nav class="links">
+        <a href="/blog.html">Blog</a>
+        <a href="/about.html">About</a>
+      </nav>
+    </header>
+
+    <main class="card">
+      <h1>Building things I care about.</h1>
+      <p class="muted">Short notes on engineering, startups, and craft.</p>
+      <hr />
+      <h2>Latest</h2>
+      <div class="postlist">
+        <div class="postitem">
+          <div class="title"><a href="/post-1.html">Post 1: Hello world</a></div>
+          <div class="meta">Dec 15, 2025 · 2 min</div>
+        </div>
+      </div>
+    </main>
+
+    <div class="footer">© <span id="y"></span> Sam Bernet</div>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

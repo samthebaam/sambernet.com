@@ -1,2 +1,0 @@
-# sambernet.com
-PersonalPage
