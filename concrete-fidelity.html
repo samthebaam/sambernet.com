@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Concrete Fidelity: An Engineering Deep Dive into DIY Desktop Monitors · Sam Bernet</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="nav">
+      <div class="brand"><a href="/">Sam Bernet</a></div>
+      <nav class="links">
+        <a href="/blog.html">Blog</a>
+        <a href="/about.html">About</a>
+      </nav>
+    </header>
+
+    <article class="card">
+      <h1>Concrete Fidelity: An Engineering Deep Dive into DIY Desktop Monitors</h1>
+      <div class="meta">Jan 2026</div>
+      <hr />
+
+      <h2>1. Motivation: Why Concrete?</h2>
+
+      <p>
+        The choice of enclosure material is paramount in high-fidelity speaker design. While MDF (Medium-Density Fibreboard) is the industry standard for its cost-effectiveness and ease of machining, it is fundamentally a compromise. My motivation was to eliminate cabinet resonance entirely.
+      </p>
+
+      <p>
+        A speaker enclosure's primary function is not to amplify sound, but to provide an inert, non-resonant platform for the drivers. Any vibration in the cabinet walls "colors" the sound, muddying the midrange and smearing transients. Concrete, with its high density and excellent internal damping properties, offers a superior solution. Its high mass shifts cabinet resonances far below the audible range, and its inherent stiffness minimizes panel vibration. This results in a "dead" box that allows the drivers to perform with maximum clarity and precision.
+      </p>
+
+      <h2>2. Design Considerations and Approach</h2>
+
+      <p>
+        The design process was driven by two constraints: acoustic performance and manufacturability via casting.
+      </p>
+
+      <h3>Acoustic Drivers and Enclosure Volume</h3>
+
+      <p>I selected a two-way system:</p>
+
+      <ul>
+        <li><strong>Woofer:</strong> Dayton Audio DS135-8 (5" Designer Series)</li>
+        <li><strong>Tweeter:</strong> Peerless Tymphany BC25SC08-04 (1" Silk Dome)</li>
+      </ul>
+
+      <p>
+        The woofer's Thiele-Small parameters, specifically its <strong>Qts of 0.39</strong> and <strong>Vas of 7.27 liters</strong>, dictated the sealed enclosure volume. To achieve a compact desktop monitor, I settled on a <strong>3-liter sealed volume</strong>. This volume is a compromise, resulting in a theoretical <strong>F3 of approximately 113 Hz</strong>, which explains the perceived lack of bass, but ensures a controlled, fast bass roll-off ideal for desktop placement where room gain can assist.
+      </p>
+
+      <h3>Geometry and Diffraction Control</h3>
+
+      <p>The enclosure geometry was designed to minimize internal standing waves and external diffraction.</p>
+
+      <ul>
+        <li><strong>Non-Parallel Walls:</strong> The trapezoidal shape eliminates parallel internal surfaces, preventing the buildup of resonant modes that would otherwise color the sound.</li>
+        <li><strong>Chamfered Baffle:</strong> The front baffle features large chamfers to smooth the transition of sound waves from the driver to the air, significantly reducing high-frequency diffraction that causes response irregularities.</li>
+      </ul>
+
+      <h2>3. Production: The Hybrid Casting Method</h2>
+
+      <p>
+        Casting complex, non-rectangular shapes in concrete presents a significant challenge. To ensure precise internal geometry, including driver cutouts and mounting points, I developed a hybrid casting method:
+      </p>
+
+      <ol>
+        <li><strong>3D-Printed Skeleton (The Core):</strong> The internal structure, or "skeleton," was 3D-printed using PLA. This hollow structure included all mounting points for the crossover board and the drivers. This skeleton serves as the <strong>lost inner mold</strong> and remains permanently embedded in the concrete.</li>
+        <li><strong>Plaster of Paris Negative:</strong> The final external shape was 3D-printed and then used to cast a negative mold in Plaster of Paris. This mold provided the precise external geometry and surface finish.</li>
+        <li><strong>Casting:</strong> The 3D-printed skeleton was suspended within the Plaster of Paris mold. A high-performance, self-compacting concrete mix (CEM-FLUP with basalt micro-fibers) was poured through a small opening at the base. This bottom-pour method ensures the best possible finish on the visible surfaces. The concrete flowed around the skeleton, creating a monolithic, thin-walled (12mm) enclosure with a perfectly formed, integrated interior.</li>
+      </ol>
+
+      <h2>4. Crossover Design in VituixCAD</h2>
+
+      <p>
+        The crossover network is the brain of the speaker, responsible for dividing the frequency spectrum between the woofer and the tweeter. I used <strong>VituixCAD</strong> for simulation and optimization.
+      </p>
+
+      <h3>Initial Crossover and the Fs Problem</h3>
+
+      <p>
+        My initial design crossed the drivers at <strong>1700 Hz</strong> using a Linkwitz-Riley acoustic slope. However, the Peerless tweeter has a resonant frequency (<strong>Fs</strong>) of <strong>1600 Hz</strong>. Crossing so close to the Fs is highly risky, as the tweeter's excursion increases dramatically, leading to high distortion and potential damage.
+      </p>
+
+      <h3>Optimization for Smoothness and Safety</h3>
+
+      <p>The final design was optimized to:</p>
+
+      <ul>
+        <li><strong>Increase Crossover Point:</strong> The crossover was shifted up to <strong>2500 Hz</strong> to provide a safe buffer above the tweeter's Fs, ensuring clean, low-distortion high-frequency reproduction.</li>
+        <li><strong>Baffle Step Compensation:</strong> The simulation included a baffle step compensation circuit to account for the 6dB drop in output below the frequency where the baffle size becomes acoustically significant.</li>
+      </ul>
+
+      <h2>5. Measurement and Analysis with REW</h2>
+
+      <p>
+        To validate the design, precise acoustic measurements were essential. I used <strong>Room EQ Wizard (REW)</strong> to capture and merge the near-field and far-field responses.
+      </p>
+
+      <h3>Merging Near-Field and Far-Field Data</h3>
+
+      <ul>
+        <li><strong>Far-Field Measurement:</strong> Captured the full frequency range at 1 meter on-axis, providing accurate data for the mid-range and high frequencies (above 400 Hz).</li>
+        <li><strong>Near-Field Measurement:</strong> Captured the woofer's response very close to the cone, providing accurate data for the low frequencies (below 400 Hz), free from room reflections.</li>
+        <li><strong>Data Merge:</strong> The two measurements were mathematically merged in REW, using the near-field data for the bass and the far-field data for the rest of the spectrum, resulting in a single, anechoic-like full-range response curve.</li>
+      </ul>
+
+      <h3>Analysis of the Final Measurement</h3>
+
+      <p>
+        The final merged measurement confirmed the theoretical <strong>F3 at 113 Hz</strong>. The response curve was relatively smooth from 200 Hz up to the crossover point, but the low-end roll-off was evident. The waterfall plot confirmed the excellent damping of the concrete, showing rapid decay in the mid and high frequencies.
+      </p>
+
+      <h2>6. Conclusion and Future Steps</h2>
+
+      <p>
+        Building these concrete monitors was a profound lesson in material science and acoustic engineering. The concrete enclosure delivers on its promise of an inert cabinet, providing a clarity that is immediately noticeable.
+      </p>
+
+      <p>
+        The remaining challenge is the bass extension. The current sealed 3-liter design is inherently limited by physics. The most practical solution for full-range fidelity is to integrate a dedicated active subwoofer, allowing the concrete monitors to focus on the mid-range and high frequencies where their superior enclosure material truly shines.
+      </p>
+    </article>
+  </div>
+</body>
+</html>
+
