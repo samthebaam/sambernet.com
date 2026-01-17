@@ -58,22 +58,37 @@ a:hover {
 /* Navigation */
 .nav {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   padding-bottom: 20px;
   border-bottom: 1px solid var(--border);
 }
 
 .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.brand-text {
   font-family: 'Space Mono', monospace;
   font-weight: 700;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 1px;
-}
-
-.brand a {
-  text-decoration: none;
 }
 
 .badge {
